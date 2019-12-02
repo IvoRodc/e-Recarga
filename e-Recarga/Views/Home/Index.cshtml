@@ -1,0 +1,85 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+    <main role="main">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+            </ol>
+
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop" class="video-tabs">
+                        <source src="~/Content/videos/traffic.mp4" type="video/mp4">
+                    </video>
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <h1>Mobilidade Elétrica</h1>
+                            <p>O futuro da mobilidade urbana começa hoje!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop" class="video-tabs">
+                        <source src="~/Content/videos/windmill.mp4" type="video/mp4">
+                    </video>
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <h1>Estações de Carregamento</h1>
+                            <p>Procure a estação de carregamento mais próxima de si.</p>
+                            <p><a class="btn btn-lg btn-primary" href="#" role="button">Consultar lista</a></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </a>
+            <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div class="container">
+
+            <div class="row featurette">
+                <div class="col-md-7">
+                    <h2 class="featurette-heading">A energia que nos move. <span class="text-muted">Agora mais Limpa!</span></h2>
+                    <p class="lead">A mobilidade elétrica é um importante contributo para a mobilidade sustentável e para o aumento da eficiência energética no transporte.</p>
+                </div>
+                <div class="col-md-5">
+                    <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" src="~/Content/images/energia1.jpg" height="500" width="500"/>
+                </div>
+            </div>
+
+            <hr class="featurette-divider">
+
+            <div class="row featurette">
+                <div class="col-md-7 order-md-2">
+                    <h2 class="featurette-heading">Quando pode carregar o seu veículo?<span class="text-muted"> Você decide!</span></h2>
+                    <p class="lead">Procure a estação que mais lhe convém e se estiver disponível pode agendar o carregamento para a hora que desejar.</p>
+                </div>
+                <div class="col-md-5 order-md-1">
+                    <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" src="~/Content/images/energia2.jpg" height="500" width="500" />
+                </div>
+            </div>
+
+            <hr class="featurette-divider">
+
+            <div class="row featurette">
+                <div class="col-md-7">
+                    <h2 class="featurette-heading">Ainda não sabe onde pode carregar? <span class="text-muted">Nós ajudamos.</span></h2>
+                    <p class="lead">Consulete a lista de estações de carregamento. Tem mais de 500 estações à sua disposição.</p>
+                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Consulte aqui a lista de estações</a></p>
+                </div>
+                <div class="col-md-5">
+                    <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" src="~/Content/images/energia3.jpg" height="500" width="500" />
+                </div>
+            </div>
+
+        </div>
+    </main>
