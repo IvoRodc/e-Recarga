@@ -176,9 +176,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="DAL\Cliente.cs" />
-    <Compile Include="DAL\Operador.cs" />
-    <Compile Include="DAL\PontoCarregamento.cs" />
+    <Compile Include="DAL\PostoCarregamento.cs" />
+    <Compile Include="DAL\Reservas.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
