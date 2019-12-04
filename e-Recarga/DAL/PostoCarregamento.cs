@@ -6,10 +6,13 @@ using System.Web;
 
 namespace e_Recarga.DAL
 {
-    public class PontoCarregamento // Onde as estações se encontram
+    public class PostoCarregamento // Onde as estações se encontram
     {
         [Key]
-        public int IdPontoCarregamento { get; set; }
+        public int Id_PostoCarregamento { get; set; }
+
+        [Required]
+        public int Id_OPC { get; set; }
 
         [Required]
         [StringLength(9)]
@@ -21,6 +24,9 @@ namespace e_Recarga.DAL
         public int VelocidadeCarregamento { get; set; } //kW
 
         [Required]
+        public int NumTomadas { get; set; }
+
+        [Required]
         [StringLength(20)]
         public string Municipio { get; set; }
 
@@ -29,18 +35,16 @@ namespace e_Recarga.DAL
         public string Localizacao { get; set; }
 
         [Required]
-        public float ValorFixoInicial { get; set; }
+        public double ValorFixoInicial { get; set; }
 
         [Required]
-        public float ValorVariavelMinutoPorMeiaHora { get; set; }
+        public double ValorVariavelTempoMenos30Min { get; set; }  // ( € / minuto ) < 30 min
 
         [Required]
-        public float ValorVariavelMinutoPorMaisTempo { get; set; }
+        public double ValorVariavelTempoMais30Min { get; set; } // ( € / minuto ) > 30 min
 
+        
         [Required]
-        public float ValorVariavelKWh { get; set; }
-
-        [Required]
-        public int IdOperador { get; set; }
+        public bool Ativo { get; set; }  //Se posto de carregamento está ativo
     }
 }
