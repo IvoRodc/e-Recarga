@@ -46,5 +46,7 @@ namespace e_Recarga.DAL
         
         [Required]
         public bool Ativo { get; set; }  //Se posto de carregamento está ativo
+
+        public ICollection <Reservas> Reservas { get; set; }
     }
 }
