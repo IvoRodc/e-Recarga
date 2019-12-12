@@ -1,4 +1,5 @@
-﻿/* CUSTOMIZE THE CAROUSEL
+﻿
+/* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
 
 /* Carousel base class */
@@ -55,6 +56,7 @@
     font-weight: 300;
     line-height: 1;
     letter-spacing: -.05rem;
+    margin-top: 2rem;
 }
 
 /*Videos tabs
@@ -80,8 +82,9 @@
     }
 }
 
-@media (min-width: 62em) {
-    .featurette-heading {
-        margin-top: 7rem;
-    }
+.footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
 }

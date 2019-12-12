@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
+<html style="height: 100%; box-sizing: border-box">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,13 +8,13 @@
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
-<body>
+<body class="min-vh-100 position-relative" style="padding-bottom: 9rem">
     @Html.Partial("_NavBar")
 
     <main role="main">
         @RenderBody()
-        @Html.Partial("_Footer")
     </main>
+    @Html.Partial("_Footer")
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

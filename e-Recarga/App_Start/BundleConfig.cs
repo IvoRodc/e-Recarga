@@ -23,7 +23,7 @@ namespace e_Recarga
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap-materia.css",
+                      "~/Content/bootstrap.css",
                       "~/Content/Site.css"));
         }
     }

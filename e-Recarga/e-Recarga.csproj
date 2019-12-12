@@ -206,7 +206,6 @@
     <Content Include="Content\images\energia2.jpg" />
     <Content Include="Content\images\energia3.jpg" />
     <Content Include="Content\videos\traffic.mp4" />
-    <Content Include="Content\bootstrap-materia.css" />
     <Content Include="Content\videos\traffic_Trim.mp4" />
     <Content Include="Content\videos\windmill.mp4" />
     <Content Include="Content\videos\windmill_Trim.mp4" />
