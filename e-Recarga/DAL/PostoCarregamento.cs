@@ -1,18 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
 namespace e_Recarga.DAL
 {
+    [Table("PostoCarregamento")]
     public class PostoCarregamento // Onde as estações se encontram
     {
         [Key]
         public int Id_PostoCarregamento { get; set; }
 
         [Required]
-        public int Id_OPC { get; set; }
+        [StringLength(128)]
+        public string Id_OPC { get; set; }
 
         [Required]
         [StringLength(9)]

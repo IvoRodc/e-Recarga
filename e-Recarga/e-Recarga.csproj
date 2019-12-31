@@ -180,6 +180,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InitAdminController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OPCController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\UsersAdminController.cs" />
     <Compile Include="DAL\eRecargaDB.cs" />
@@ -191,6 +192,10 @@
     <Compile Include="Migrations\201912111615305_inicial.cs" />
     <Compile Include="Migrations\201912111615305_inicial.designer.cs">
       <DependentUpon>201912111615305_inicial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912311925063_update1.cs" />
+    <Compile Include="Migrations\201912311925063_update1.designer.cs">
+      <DependentUpon>201912311925063_update1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -381,6 +386,11 @@
     <Content Include="Views\InitAdmin\Success.cshtml" />
     <Content Include="Views\InitAdmin\Index.cshtml" />
     <Content Include="Views\InitAdmin\Error.cshtml" />
+    <Content Include="Views\OPC\Create.cshtml" />
+    <Content Include="Views\OPC\Delete.cshtml" />
+    <Content Include="Views\OPC\Details.cshtml" />
+    <Content Include="Views\OPC\Edit.cshtml" />
+    <Content Include="Views\OPC\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -399,6 +409,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201912111615305_inicial.resx">
       <DependentUpon>201912111615305_inicial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912311925063_update1.resx">
+      <DependentUpon>201912311925063_update1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

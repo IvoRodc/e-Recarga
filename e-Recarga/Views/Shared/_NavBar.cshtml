@@ -8,17 +8,29 @@
         </button>
 
         @{
-            if (Request.IsAuthenticated && User.IsInRole("Admin"))
+            if (Request.IsAuthenticated)
             {
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        @Html.ActionLink("Gerir Roles", "Index", "RolesAdmin", new object { }, new { @class = "nav-link" })
-                    </li>
-                    <li class="nav-item">
-                        @Html.ActionLink("Gerir Utilizadores", "Index", "UsersAdmin", new object { }, new { @class = "nav-link" })
-                    </li>
-                </ul>
+                if (User.IsInRole("Admin"))
+                {
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            @Html.ActionLink("Gerir Roles", "Index", "RolesAdmin", new object { }, new { @class = "nav-link" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Gerir Utilizadores", "Index", "UsersAdmin", new object { }, new { @class = "nav-link" })
+                        </li>
+                    </ul>
+                }
+                else if (User.IsInRole("OPC"))
+                {
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            @Html.ActionLink("Gerir Postos", "Index", "OPC", new object { }, new { @class = "nav-link" })
+                        </li>
+                    </ul>
+                }
             }
+
         }
 
         @Html.Partial("_LoginPartial")
