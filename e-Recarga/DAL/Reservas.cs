@@ -12,7 +12,8 @@ namespace e_Recarga.DAL
         public int id_Reserva { get; set; }
         
         [Required]
-        public int id_Cliente { get; set; }
+        [StringLength(128)]
+        public string id_Cliente { get; set; }
 
         [Required]
         public DateTime Data { get; set; }  //Data.Date (dará apenas o MM/DD/YYYY)
