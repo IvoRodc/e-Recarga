@@ -186,6 +186,7 @@
     <Compile Include="DAL\eRecargaDB.cs" />
     <Compile Include="DAL\PostoCarregamento.cs" />
     <Compile Include="DAL\Reservas.cs" />
+    <Compile Include="DTOs\PostoCarregamentoDTO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -399,6 +400,7 @@
     <Content Include="Views\OPC\Details.cshtml" />
     <Content Include="Views\OPC\Edit.cshtml" />
     <Content Include="Views\OPC\Index.cshtml" />
+    <Content Include="Views\Home\ListaPostos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -29,7 +29,7 @@
                         <div class="carousel-caption">
                             <h1>Estações de Carregamento</h1>
                             <p>Procure a estação de carregamento mais próxima de si.</p>
-                            <p><a class="btn btn-lg btn-primary" href="#" role="button">Consultar lista</a></p>
+                            <p>@Html.ActionLink("Consultar lista", "ListaPostos", new object { }, new { @class = "btn btn-lg btn-primary" })</p>
                         </div>
                     </div>
                 </div>
@@ -74,7 +74,7 @@
                 <div class="col-md-7">
                     <h2 class="featurette-heading">Ainda não sabe onde pode carregar? <span class="text-muted">Nós ajudamos.</span></h2>
                     <p class="lead">Consulete a lista de estações de carregamento. Tem mais de 500 estações à sua disposição.</p>
-                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Consulte aqui a lista de estações</a></p>
+                    <p>@Html.ActionLink("Consulte aqui a lista de estações", "ListaPostos", new object { }, new { @class = "btn btn-lg btn-primary" })</p>
                 </div>
                 <div class="col-md-5">
                     <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" src="~/Content/images/energia3.jpg" height="500" width="500" />

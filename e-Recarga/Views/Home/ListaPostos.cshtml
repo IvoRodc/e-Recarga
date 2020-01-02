@@ -1,0 +1,68 @@
+﻿@model IEnumerable<e_Recarga.DTOs.PostoCarregamentoDTO>
+
+@{
+    ViewBag.Title = "ListaPostos";
+}
+
+
+    <div class="container mt-5">
+        <h2>ListaPostos</h2>
+
+        <table class="table">
+            <tr>
+                <th>
+                    Nome
+                </th>
+                <th>
+                    Potencia
+                </th>
+                <th>
+                    # Tomadas
+                </th>
+                <th>
+                    Municipio
+                </th>
+                <th>
+                    Valor Fixo Inicial
+                </th>
+                <th>
+                    €/min (<30 minutos)
+                </th>
+                <th>
+                    €/min (>30 minutos)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Potencia)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NTomadas)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Municipio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ValorInicial)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Menos30Min)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Mais30Min)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Detalhes", "Details", new { id = item.IDPosto })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
