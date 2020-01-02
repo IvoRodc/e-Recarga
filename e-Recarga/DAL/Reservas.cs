@@ -18,13 +18,13 @@ namespace e_Recarga.DAL
         [HiddenInput(DisplayValue = false)]
         public string id_Cliente { get; set; }
 
-        [Required]
-        public DateTime Data { get; set; }  //Data.Date (dará apenas o MM/DD/YYYY)
 
         [Required]
-        public int HoraInicioCarregamento { get; set; }
+        [Display(Name = "Inicio do carregamento")]
+        public DateTime InicioCarregamento { get; set; }
 
         [Required]
-        public int HoraFimCarregamento { get; set; }
+        [Display(Name = "Fim do carregamento")]
+        public DateTime FimCarregamento { get; set; }
     }
 }
