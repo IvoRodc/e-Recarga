@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace e_Recarga.DAL
 {
@@ -15,6 +17,8 @@ namespace e_Recarga.DAL
 
         [Required]
         [StringLength(128)]
+        [Display(AutoGenerateField = false)]
+        [HiddenInput(DisplayValue = false)]
         public string Id_OPC { get; set; }
 
         [Required]
@@ -24,9 +28,11 @@ namespace e_Recarga.DAL
         public string Nome { get; set; }
 
         [Required]
-        public int VelocidadeCarregamento { get; set; } //kW
+        [DisplayName("Potência")]
+        public double VelocidadeCarregamento { get; set; } //kW
 
         [Required]
+        [DisplayName("# Tomadas")]
         public int NumTomadas { get; set; }
 
         [Required]
@@ -38,12 +44,15 @@ namespace e_Recarga.DAL
         public string Localizacao { get; set; }
 
         [Required]
+        [DisplayName("Valor fixo")]
         public double ValorFixoInicial { get; set; }
 
         [Required]
+        [DisplayName("€/min (<30 minutos)")]
         public double ValorVariavelTempoMenos30Min { get; set; }  // ( € / minuto ) < 30 min
 
         [Required]
+        [DisplayName("€/min (>30 minutos)")]
         public double ValorVariavelTempoMais30Min { get; set; } // ( € / minuto ) > 30 min
 
         

@@ -7,9 +7,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using e_Recarga.DAL;
+using Microsoft.AspNet.Identity;
 
 namespace e_Recarga.Controllers
 {
+    [Authorize(Roles = "OPC")]
     public class OPCController : Controller
     {
         private eRecargaDB db = new eRecargaDB();
@@ -17,7 +19,9 @@ namespace e_Recarga.Controllers
         // GET: OPC
         public ActionResult Index()
         {
-            return View(db.Postos.ToList());
+            string userId = User.Identity.GetUserId();
+            List<PostoCarregamento> lista = db.Postos.Where(m => m.Id_OPC == userId).ToList();
+            return View(lista);
         }
 
         // GET: OPC/Details/5
@@ -46,8 +50,11 @@ namespace e_Recarga.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id_PostoCarregamento,Id_OPC,Nome,VelocidadeCarregamento,NumTomadas,Municipio,Localizacao,ValorFixoInicial,ValorVariavelTempoMenos30Min,ValorVariavelTempoMais30Min,Ativo")] PostoCarregamento postoCarregamento)
+        public ActionResult Create([Bind(Include = "Id_PostoCarregamento,Nome,VelocidadeCarregamento,NumTomadas,Municipio,Localizacao,ValorFixoInicial,ValorVariavelTempoMenos30Min,ValorVariavelTempoMais30Min,Ativo")] PostoCarregamento postoCarregamento)
         {
+            postoCarregamento.Id_OPC = User.Identity.GetUserId();
+            ModelState.Clear();
+            TryValidateModel(postoCarregamento);
             if (ModelState.IsValid)
             {
                 db.Postos.Add(postoCarregamento);

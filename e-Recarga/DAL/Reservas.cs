@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace e_Recarga.DAL
 {
@@ -13,6 +14,8 @@ namespace e_Recarga.DAL
         
         [Required]
         [StringLength(128)]
+        [Display(AutoGenerateField = false)]
+        [HiddenInput(DisplayValue = false)]
         public string id_Cliente { get; set; }
 
         [Required]
