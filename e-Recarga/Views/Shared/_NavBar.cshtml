@@ -29,6 +29,14 @@
                         </li>
                     </ul>
                 }
+                else if (User.IsInRole("UPC"))
+                {
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            @Html.ActionLink("Reservar Tomadas", "Index", "UPC", new object { }, new { @class = "nav-link" })
+                        </li>
+                    </ul>
+                }
             }
 
         }

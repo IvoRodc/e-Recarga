@@ -1,0 +1,68 @@
+﻿@model IEnumerable<e_Recarga.DAL.PostoCarregamento>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+    <div class="container mt-5">
+        <h2>Lista Postos de Carregamento</h2>
+
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.VelocidadeCarregamento)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NumTomadas)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Municipio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ValorFixoInicial)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ValorVariavelTempoMenos30Min)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ValorVariavelTempoMais30Min)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.VelocidadeCarregamento)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NumTomadas)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Municipio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ValorFixoInicial)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ValorVariavelTempoMenos30Min)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ValorVariavelTempoMais30Min)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Detalhes", "Detalhes", new { id = item.Id_PostoCarregamento }) |
+                        @Html.ActionLink("Reservar", "Reservar", new { id = item.Id_PostoCarregamento })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>

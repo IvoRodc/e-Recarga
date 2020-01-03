@@ -182,11 +182,13 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OPCController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
+    <Compile Include="Controllers\UPCController.cs" />
     <Compile Include="Controllers\UsersAdminController.cs" />
     <Compile Include="DAL\eRecargaDB.cs" />
     <Compile Include="DAL\PostoCarregamento.cs" />
     <Compile Include="DAL\Reservas.cs" />
     <Compile Include="DTOs\PostoCarregamentoDTO.cs" />
+    <Compile Include="DTOs\ReservaDTO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -205,6 +207,10 @@
     <Compile Include="Migrations\202001021628113_update3.cs" />
     <Compile Include="Migrations\202001021628113_update3.designer.cs">
       <DependentUpon>202001021628113_update3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001031958091_update4.cs" />
+    <Compile Include="Migrations\202001031958091_update4.designer.cs">
+      <DependentUpon>202001031958091_update4.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -401,6 +407,9 @@
     <Content Include="Views\OPC\Edit.cshtml" />
     <Content Include="Views\OPC\Index.cshtml" />
     <Content Include="Views\Home\ListaPostos.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\UPC\Index.cshtml" />
+    <Content Include="Views\UPC\Detalhes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -428,6 +437,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202001021628113_update3.resx">
       <DependentUpon>202001021628113_update3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001031958091_update4.resx">
+      <DependentUpon>202001031958091_update4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
