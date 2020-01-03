@@ -3,6 +3,7 @@ using e_Recarga.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -41,6 +42,20 @@ namespace e_Recarga.Controllers
                                 })
                             .ToList();
             return View(lista);
+        }
+
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            PostoCarregamento postoCarregamento = db.Postos.Find(id);
+            if (postoCarregamento == null)
+            {
+                return HttpNotFound();
+            }
+            return View(postoCarregamento);
         }
 
         public ActionResult Contact()

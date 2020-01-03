@@ -29,6 +29,7 @@ namespace e_Recarga.DAL
 
         [Required]
         [DisplayName("Potência")]
+        [DisplayFormat(DataFormatString = "{0:F} kW", ApplyFormatInEditMode = false)]
         public double VelocidadeCarregamento { get; set; } //kW
 
         [Required]
@@ -45,14 +46,17 @@ namespace e_Recarga.DAL
 
         [Required]
         [DisplayName("Valor fixo")]
+        [DisplayFormat(DataFormatString = "{0:C2}")]
         public double ValorFixoInicial { get; set; }
 
         [Required]
         [DisplayName("€/min (<30 minutos)")]
+        [DisplayFormat(DataFormatString = "{0:C2}")]
         public double ValorVariavelTempoMenos30Min { get; set; }  // ( € / minuto ) < 30 min
 
         [Required]
         [DisplayName("€/min (>30 minutos)")]
+        [DisplayFormat(DataFormatString = "{0:C2}")]
         public double ValorVariavelTempoMais30Min { get; set; } // ( € / minuto ) > 30 min
 
         
