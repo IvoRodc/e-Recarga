@@ -192,25 +192,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201912111615305_inicial.cs" />
-    <Compile Include="Migrations\201912111615305_inicial.designer.cs">
-      <DependentUpon>201912111615305_inicial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201912311925063_update1.cs" />
-    <Compile Include="Migrations\201912311925063_update1.designer.cs">
-      <DependentUpon>201912311925063_update1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001011816186_update2.cs" />
-    <Compile Include="Migrations\202001011816186_update2.designer.cs">
-      <DependentUpon>202001011816186_update2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001021628113_update3.cs" />
-    <Compile Include="Migrations\202001021628113_update3.designer.cs">
-      <DependentUpon>202001021628113_update3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001031958091_update4.cs" />
-    <Compile Include="Migrations\202001031958091_update4.designer.cs">
-      <DependentUpon>202001031958091_update4.cs</DependentUpon>
+    <Compile Include="Migrations\202001032356379_inicial.cs" />
+    <Compile Include="Migrations\202001032356379_inicial.designer.cs">
+      <DependentUpon>202001032356379_inicial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -410,6 +394,7 @@
     <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Views\UPC\Index.cshtml" />
     <Content Include="Views\UPC\Detalhes.cshtml" />
+    <Content Include="Views\UPC\Reservar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -426,20 +411,8 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201912111615305_inicial.resx">
-      <DependentUpon>201912111615305_inicial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912311925063_update1.resx">
-      <DependentUpon>201912311925063_update1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001011816186_update2.resx">
-      <DependentUpon>202001011816186_update2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001021628113_update3.resx">
-      <DependentUpon>202001021628113_update3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001031958091_update4.resx">
-      <DependentUpon>202001031958091_update4.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202001032356379_inicial.resx">
+      <DependentUpon>202001032356379_inicial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

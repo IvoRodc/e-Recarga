@@ -8,6 +8,7 @@ namespace e_Recarga.DTOs
 {
     public class PostoCarregamentoDTO
     {
+
         public int IDPosto { get; set; }
         public string Nome { get; set; }
 
