@@ -5,8 +5,11 @@ using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using e_Recarga.DAL;
+using e_Recarga.DTOs;
+using e_Recarga.ViewModels;
 using Microsoft.AspNet.Identity;
 
 namespace e_Recarga.Controllers
@@ -120,6 +123,59 @@ namespace e_Recarga.Controllers
             db.Postos.Remove(postoCarregamento);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult Estatisticas()
+        {
+            string userId = User.Identity.GetUserId();
+            EstatisticasOPCViewModel estatisticasOPCViewModel = new EstatisticasOPCViewModel();
+            List<PostoCarregamento> listaPostos = db.Postos.Where(p => p.Id_OPC == userId).ToList();
+
+
+            //5 Municipios com mais utilização
+            List<string> listaMunicipios = db.Postos.Select(p => p.Municipio).Distinct().ToList();
+            List<MunicipioMaisUtilizados> municipioMaisUtilizados = new List<MunicipioMaisUtilizados>();
+            foreach(string municipio in listaMunicipios)
+            {
+                int nUtilizações = 0;
+                foreach(PostoCarregamento p in listaPostos.Where(p => p.Municipio == municipio))
+                {
+                    nUtilizações += db.Reservas.Where(r => r.id_Posto == p.Id_PostoCarregamento).Count();
+                }
+                municipioMaisUtilizados.Add(new MunicipioMaisUtilizados { Municipio = municipio, nUtilizacoes = nUtilizações });
+            }
+            estatisticasOPCViewModel.MunicipioMaisUtilizados = municipioMaisUtilizados.OrderBy(m => m.nUtilizacoes).Take(5).ToList();
+            
+            /*estatisticasOPCViewModel.gráficoMunicipios = new Chart(600, 600)
+                                    .AddTitle("5 Municipios com mais utilizações")
+                                    .AddSeries("Default", chartType: "Pie", xValue: municipioMaisUtilizados, xField: "Municipio", yValues: municipioMaisUtilizados, yFields: "nUtilizacoes");*/
+
+            //5 postos mais utilizados
+            List<PostosMaisUsados> postosMaisUsados = new List<PostosMaisUsados>();
+            foreach(PostoCarregamento p in listaPostos)
+            {
+                int nUtilizacoes = db.Reservas.Where(r => r.id_Posto == p.Id_PostoCarregamento).Count();
+                postosMaisUsados.Add(new PostosMaisUsados { Nome = p.Nome, nUtilizacoes = nUtilizacoes });
+            }
+            estatisticasOPCViewModel.PostosMaisUsados = postosMaisUsados.OrderBy(p => p.nUtilizacoes).Take(5).ToList();
+
+            //total pago pelos consumidores
+            double total = 0;
+            foreach(PostoCarregamento p in listaPostos)
+            {
+                double totalReserva = 0;
+                foreach(Reservas r in db.Reservas.Where(r => r.id_Posto == p.Id_PostoCarregamento))
+                {
+                    int tempoReserva = (int)(r.FimCarregamento - r.InicioCarregamento).TotalMinutes;
+                    totalReserva = tempoReserva > 30 ?
+                        p.ValorFixoInicial + (30 * p.ValorVariavelTempoMenos30Min) + ((tempoReserva - 30) * p.ValorVariavelTempoMais30Min) :
+                        p.ValorFixoInicial + (tempoReserva * p.ValorVariavelTempoMenos30Min);
+                    total += totalReserva;
+                }
+            }
+            estatisticasOPCViewModel.Lucro = total;
+
+            return View(estatisticasOPCViewModel);
         }
 
         protected override void Dispose(bool disposing)

@@ -1,0 +1,29 @@
+﻿@model IEnumerable<e_Recarga.DTOs.PostosMaisUsados>
+
+<div class="table-responsive">
+
+    <table class="table">
+        <tr>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.nUtilizacoes)
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nUtilizacoes)
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>

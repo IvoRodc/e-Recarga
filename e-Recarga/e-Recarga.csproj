@@ -187,7 +187,9 @@
     <Compile Include="DAL\eRecargaDB.cs" />
     <Compile Include="DAL\PostoCarregamento.cs" />
     <Compile Include="DAL\Reservas.cs" />
+    <Compile Include="DTOs\MunicipioMaisUtilizados.cs" />
     <Compile Include="DTOs\PostoCarregamentoDTO.cs" />
+    <Compile Include="DTOs\PostosMaisUsados.cs" />
     <Compile Include="DTOs\ReservaDTO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -202,6 +204,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\EstatisticasOPCViewModel.cs" />
     <Compile Include="ViewModels\ReservasUPCViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -398,6 +401,9 @@
     <Content Include="Views\UPC\Reservar.cshtml" />
     <Content Include="Views\UPC\ListaReservas.cshtml" />
     <Content Include="Views\UPC\Detalhes2.cshtml" />
+    <Content Include="Views\OPC\Estatisticas.cshtml" />
+    <Content Include="Views\Shared\_GraficoMunicipios.cshtml" />
+    <Content Include="Views\Shared\_GraficoPostos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

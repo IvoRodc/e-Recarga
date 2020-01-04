@@ -1,0 +1,30 @@
+﻿@model e_Recarga.ViewModels.EstatisticasOPCViewModel
+
+@{
+    ViewBag.Title = "Estatisticas";
+}
+
+    <div class="container mt-5">
+        <h2>Estatisticas</h2>
+
+        <div>
+            <hr />
+            <dl class="dl-horizontal">
+                <h4>5 Municipios com mais utilizações</h4>
+                @{Html.RenderPartial("_GraficoMunicipios", Model.MunicipioMaisUtilizados); }
+            </dl>
+
+            <dl class="dl-horizontal">
+                <h4>5 Postos mais utilizados</h4>
+                @{Html.RenderPartial("_GraficoPostos", Model.PostosMaisUsados); }
+            </dl>
+
+            <dl class="dl-horizontal">
+                <dd>
+                    <h4>Total pago pelos consumidores: @Html.DisplayFor(model => model.Lucro)</h4>
+                </dd>
+
+            </dl>
+
+        </div>
+    </div>
