@@ -1,0 +1,77 @@
+﻿@model e_Recarga.DAL.PostoCarregamento
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+<div class="container mt-5">
+
+    <h2>Detalhes do posto @Html.DisplayFor(model => model.Nome)</h2>
+
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.VelocidadeCarregamento)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.VelocidadeCarregamento)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.NumTomadas)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NumTomadas)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Municipio)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Municipio)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Localizacao)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Localizacao)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ValorFixoInicial)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ValorFixoInicial)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ValorVariavelTempoMenos30Min)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ValorVariavelTempoMenos30Min)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ValorVariavelTempoMais30Min)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ValorVariavelTempoMais30Min)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Reservar", "Reservar", new { id = Model.Id_PostoCarregamento }) |
+        @Html.ActionLink("Voltar à lista", "ListaReservas")
+    </p>
+
+</div>

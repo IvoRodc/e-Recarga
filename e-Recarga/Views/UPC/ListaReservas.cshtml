@@ -1,0 +1,51 @@
+﻿@model IEnumerable<e_Recarga.ViewModels.ReservasUPCViewModel>
+
+@{
+    ViewBag.Title = "ListaReservas";
+}
+
+<div class="container mt-5">
+    <h2>Lista de Reservas</h2>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NomePosto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Inicio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fim)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Duracao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Custo)
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(Html.DisplayFor(modelItem => item.NomePosto).ToString(), "Detalhes2", new { id = item.id_posto })
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Inicio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fim)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Duracao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Custo)
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>"

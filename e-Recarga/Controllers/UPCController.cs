@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using e_Recarga.ViewModels;
 
 namespace e_Recarga.Controllers
 {
@@ -33,6 +34,21 @@ namespace e_Recarga.Controllers
             }
             return View(postoCarregamento);
         }
+
+        public ActionResult Detalhes2(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            PostoCarregamento postoCarregamento = db.Postos.Find(id);
+            if (postoCarregamento == null)
+            {
+                return HttpNotFound();
+            }
+            return View(postoCarregamento);
+        }
+
 
         public ActionResult Reservar(int id)
         {
@@ -78,6 +94,35 @@ namespace e_Recarga.Controllers
             db.Reservas.Add(reserva);
             db.SaveChanges();
             return View(reservaDTO);
+        }
+
+        public ActionResult ListaReservas()
+        {
+            string id_user = User.Identity.GetUserId();
+            List<Reservas> listaDB = db.Reservas.Where(r => r.id_Cliente == id_user).OrderByDescending(r => r.InicioCarregamento).ToList();
+
+            List<ReservasUPCViewModel> listaReservas = new List<ReservasUPCViewModel>();
+
+            foreach(Reservas item in listaDB)
+            {
+                PostoCarregamento p = db.Postos.Find(item.id_Posto);
+                int duracao = (int)(item.FimCarregamento - item.InicioCarregamento).TotalMinutes;
+
+                ReservasUPCViewModel aux = new ReservasUPCViewModel
+                {
+                    id_posto = item.id_Posto,
+                    NomePosto = p.Nome,
+                    Inicio = item.InicioCarregamento,
+                    Fim = item.FimCarregamento,
+                    Duracao = duracao,
+                    Custo = duracao > 30 ?
+                                    p.ValorFixoInicial + (p.ValorVariavelTempoMenos30Min * 30) + (p.ValorVariavelTempoMais30Min * (duracao - 30)) :
+                                    p.ValorFixoInicial + (p.ValorVariavelTempoMenos30Min * duracao)
+                };
+                listaReservas.Add(aux);
+            }
+
+            return View(listaReservas);
         }
 
     }
