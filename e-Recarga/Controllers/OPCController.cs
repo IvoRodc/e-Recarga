@@ -165,7 +165,11 @@ namespace e_Recarga.Controllers
             double total = 0;
             foreach(PostoCarregamento p in listaPostos)
             {
-                total += db.Reservas.Where(r => r.id_Posto == p.Id_PostoCarregamento).Sum(r => r.CustoReserva);
+                if(db.Reservas.Where(r => r.id_Posto == p.Id_PostoCarregamento).Count() > 0)
+                {
+                    total += db.Reservas.Where(r => r.id_Posto == p.Id_PostoCarregamento).Sum(r => r.CustoReserva);
+                }
+                
             }
             estatisticasOPCViewModel.Lucro = total;
 
