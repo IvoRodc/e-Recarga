@@ -68,31 +68,43 @@ namespace e_Recarga.Controllers
         {
             if (reservaDTO.Fim.CompareTo(reservaDTO.Inicio) > 0)
             {
-                reservaDTO.TempoCarregamento = (int)((reservaDTO.Fim - reservaDTO.Inicio).TotalMinutes);
+                int nTomadasPosto = db.Postos.Find(reservaDTO.IDPosto).NumTomadas;
 
-                double valorFixo = db.Postos.Find(reservaDTO.IDPosto).ValorFixoInicial;
-                double valorInicial = db.Postos.Find(reservaDTO.IDPosto).ValorVariavelTempoMenos30Min;
-                double valorDepois = db.Postos.Find(reservaDTO.IDPosto).ValorVariavelTempoMais30Min;
+                int nReservasSimultaneo = db.Reservas.Where(r => r.InicioCarregamento < reservaDTO.Inicio && r.FimCarregamento > reservaDTO.Inicio).Count();
 
-                if (reservaDTO.TempoCarregamento > 30)
+                if (nTomadasPosto > nReservasSimultaneo)
                 {
-                    reservaDTO.EstimativaPreco = valorFixo + (30 * valorInicial) + ((reservaDTO.TempoCarregamento - 30) * valorDepois);
+
+                    reservaDTO.TempoCarregamento = (int)((reservaDTO.Fim - reservaDTO.Inicio).TotalMinutes);
+
+                    double valorFixo = db.Postos.Find(reservaDTO.IDPosto).ValorFixoInicial;
+                    double valorInicial = db.Postos.Find(reservaDTO.IDPosto).ValorVariavelTempoMenos30Min;
+                    double valorDepois = db.Postos.Find(reservaDTO.IDPosto).ValorVariavelTempoMais30Min;
+
+                    if (reservaDTO.TempoCarregamento > 30)
+                    {
+                        reservaDTO.EstimativaPreco = valorFixo + (30 * valorInicial) + ((reservaDTO.TempoCarregamento - 30) * valorDepois);
+                    }
+                    else
+                    {
+                        reservaDTO.EstimativaPreco = valorFixo + (reservaDTO.TempoCarregamento * valorInicial);
+                    }
+
+                    Reservas reserva = new Reservas
+                    {
+                        InicioCarregamento = reservaDTO.Inicio,
+                        FimCarregamento = reservaDTO.Fim,
+                        id_Cliente = reservaDTO.IDUser,
+                        id_Posto = reservaDTO.IDPosto,
+                        CustoReserva = reservaDTO.EstimativaPreco
+                    };
+
+                    db.Reservas.Add(reserva);
+                    db.SaveChanges();
+                    return RedirectToAction("ListaReservas");
                 }
-                else
-                {
-                    reservaDTO.EstimativaPreco = valorFixo + (reservaDTO.TempoCarregamento * valorInicial);
-                }   
             }
-
-            Reservas reserva = new Reservas
-            {
-                InicioCarregamento = reservaDTO.Inicio,
-                FimCarregamento = reservaDTO.Fim,
-                id_Cliente = reservaDTO.IDUser,
-                id_Posto = reservaDTO.IDPosto
-            };
-            db.Reservas.Add(reserva);
-            db.SaveChanges();
+            reservaDTO.erro = true;
             return View(reservaDTO);
         }
 
@@ -106,7 +118,6 @@ namespace e_Recarga.Controllers
             foreach(Reservas item in listaDB)
             {
                 PostoCarregamento p = db.Postos.Find(item.id_Posto);
-                int duracao = (int)(item.FimCarregamento - item.InicioCarregamento).TotalMinutes;
 
                 ReservasUPCViewModel aux = new ReservasUPCViewModel
                 {
@@ -114,10 +125,8 @@ namespace e_Recarga.Controllers
                     NomePosto = p.Nome,
                     Inicio = item.InicioCarregamento,
                     Fim = item.FimCarregamento,
-                    Duracao = duracao,
-                    Custo = duracao > 30 ?
-                                    p.ValorFixoInicial + (p.ValorVariavelTempoMenos30Min * 30) + (p.ValorVariavelTempoMais30Min * (duracao - 30)) :
-                                    p.ValorFixoInicial + (p.ValorVariavelTempoMenos30Min * duracao)
+                    Duracao = (int)(item.FimCarregamento - item.InicioCarregamento).TotalMinutes,
+                    Custo = item.CustoReserva
                 };
                 listaReservas.Add(aux);
             }

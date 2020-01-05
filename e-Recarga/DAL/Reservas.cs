@@ -30,5 +30,9 @@ namespace e_Recarga.DAL
         [Required]
         [Display(Name = "Fim do carregamento")]
         public DateTime FimCarregamento { get; set; }
+
+        [Required]
+        [DisplayFormat(DataFormatString = "{0:C2}")]
+        public double CustoReserva { get; set; }
     }
 }

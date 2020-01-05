@@ -33,5 +33,7 @@ namespace e_Recarga.DTOs
 
         [DisplayFormat(DataFormatString = "{0:C2}")]
         public double EstimativaPreco { get; set; }
+
+        public bool erro { get; set; }
     }
 }

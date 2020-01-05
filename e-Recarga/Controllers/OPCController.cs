@@ -53,9 +53,11 @@ namespace e_Recarga.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id_PostoCarregamento,Nome,VelocidadeCarregamento,NumTomadas,Municipio,Localizacao,ValorFixoInicial,ValorVariavelTempoMenos30Min,ValorVariavelTempoMais30Min,Ativo")] PostoCarregamento postoCarregamento)
+        public ActionResult Create(PostoCarregamento postoCarregamento)
         {
             postoCarregamento.Id_OPC = User.Identity.GetUserId();
+            if (postoCarregamento.ValorVariavelTempoMais30Min == 0)
+                postoCarregamento.ValorVariavelTempoMais30Min = postoCarregamento.ValorVariavelTempoMenos30Min;
             ModelState.Clear();
             TryValidateModel(postoCarregamento);
             if (ModelState.IsValid)
@@ -88,7 +90,7 @@ namespace e_Recarga.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id_PostoCarregamento,Id_OPC,Nome,VelocidadeCarregamento,NumTomadas,Municipio,Localizacao,ValorFixoInicial,ValorVariavelTempoMenos30Min,ValorVariavelTempoMais30Min,Ativo")] PostoCarregamento postoCarregamento)
+        public ActionResult Edit(PostoCarregamento postoCarregamento)
         {
             if (ModelState.IsValid)
             {
@@ -163,15 +165,7 @@ namespace e_Recarga.Controllers
             double total = 0;
             foreach(PostoCarregamento p in listaPostos)
             {
-                double totalReserva = 0;
-                foreach(Reservas r in db.Reservas.Where(r => r.id_Posto == p.Id_PostoCarregamento))
-                {
-                    int tempoReserva = (int)(r.FimCarregamento - r.InicioCarregamento).TotalMinutes;
-                    totalReserva = tempoReserva > 30 ?
-                        p.ValorFixoInicial + (30 * p.ValorVariavelTempoMenos30Min) + ((tempoReserva - 30) * p.ValorVariavelTempoMais30Min) :
-                        p.ValorFixoInicial + (tempoReserva * p.ValorVariavelTempoMenos30Min);
-                    total += totalReserva;
-                }
+                total += db.Reservas.Where(r => r.id_Posto == p.Id_PostoCarregamento).Sum(r => r.CustoReserva);
             }
             estatisticasOPCViewModel.Lucro = total;
 

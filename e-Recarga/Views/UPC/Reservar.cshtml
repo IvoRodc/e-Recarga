@@ -7,6 +7,13 @@
     <div class="container mt-5">
         <h2>Reservar Posto @Model.NomePosto</h2>
 
+        @if (Model.erro == true)
+        {
+            <div class="alert alert-danger" role="alert">
+                Não foi possível efetuar a reserva com as datas indicadas
+            </div>
+        }
+
 
         @using (Html.BeginForm(FormMethod.Get))
         {
@@ -23,7 +30,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.Inicio, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.Inicio, new { htmlAttributes = new { @class = "form-control"} })
+                        @Html.EditorFor(model => model.Inicio, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Inicio, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -37,22 +44,6 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.TempoCarregamento, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.TempoCarregamento, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.TempoCarregamento, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.EstimativaPreco, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.EstimativaPreco, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.EstimativaPreco, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
                         <input type="submit" value="Reservar" class="btn btn-default" />
                     </div>
@@ -61,7 +52,7 @@
         }
 
         <div>
-            @Html.ActionLink("Back to List", "Index")
+            @Html.ActionLink("Voltar à lista", "Index")
         </div>
     </div>
 @section Scripts {
